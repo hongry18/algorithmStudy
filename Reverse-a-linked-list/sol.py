@@ -46,6 +46,20 @@ def print_singly_linked_list(node, sep, fptr):
 #     SinglyLinkedListNode next
 #
 #
+# O(N)
+def reverse(head):
+    prev_node = SinglyLinkedListNode(head.data)
+    head = head.next
+    while head:
+        cur_node = SinglyLinkedListNode(head.data)
+        cur_node.next=prev_node
+        prev_node = cur_node
+        head = head.next
+
+    return cur_node
+
+# O(2N)
+"""
 def reverse(head):
     r_node = SinglyLinkedList()
     r_arr = []
@@ -58,6 +72,8 @@ def reverse(head):
         r_node.insert_node(r_arr.pop())
 
     return r_node.head
+
+"""
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
