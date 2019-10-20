@@ -47,39 +47,26 @@ def print_singly_linked_list(node, sep, fptr):
 #
 #
 def insertData(head, data):
-    idx = 0
     cur = head
     while cur:
+        if data < cur.data:
+            td = cur.data
+            tn = cur.next
+            cur.data = data
+            cur.next = SinglyLinkedListNode(td)
+            cur.next.next = tn
+            break
+
         if cur.next is None:
             cur.next = SinglyLinkedListNode(data)
             break
 
-        if data < cur.data:
-            t = cur
-            cur = SinglyLinkedListNode(data)
-            cur.next = t
-
-            if idx < 1:
-                head = cur
-            break
-
-        idx += 1
         cur = cur.next
 
 def mergeLists(head1, head2):
-    cur = head1
-
     while head2:
-        t = cur
-        cur = SinglyLinkedListNode(head2.data)
-        cur.next = t
-        head1 = cur
-        
+        insertData(head1, head2.data)
         head2 = head2.next
-
-    while head1:
-        print(head1.data)
-        head1 = head1.next
 
     return head1
 
