@@ -1,0 +1,6 @@
+# Reverse a doubly linked list
+
+이중연결리스트를 이용해서 linked list를 reverse 하는건데
+
+단일연결리스트 사용방식의 front 추가로 해결했다 ...
+자료구조는 아직 어렵다.

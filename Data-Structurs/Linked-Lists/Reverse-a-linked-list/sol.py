@@ -46,8 +46,8 @@ def print_singly_linked_list(node, sep, fptr):
 #     SinglyLinkedListNode next
 #
 #
-# O(N)
-def reverse(head):
+
+def reverse1(head):
     prev_node = SinglyLinkedListNode(head.data)
     head = head.next
     while head:
@@ -57,6 +57,23 @@ def reverse(head):
         head = head.next
 
     return cur_node
+
+def reverse(head):
+    ll = SinglyLinkedList()
+    # c = current node
+    c = head
+
+    while c:
+        if ll.head is None:
+            ll.head = SinglyLinkedListNode(c.data)
+        else:
+            nn = ll.head
+            ll.head = SinglyLinkedListNode(c.data)
+            ll.head.next = nn
+
+        c = c.next
+
+    return ll.head
 
 # O(2N)
 """

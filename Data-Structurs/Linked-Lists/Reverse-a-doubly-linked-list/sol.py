@@ -49,25 +49,21 @@ def print_doubly_linked_list(node, sep, fptr):
 #     DoublyLinkedListNode prev
 #
 #
-def reverse(head):
-    c = head
-    r_node = DoublyLinkedListNode(c.data)
-    c = c.next
 
+def reverse(head):
+    ll = DoublyLinkedList()
+    c = head
     while c:
-        print(c.data)
-        nn = r_node
-        r_node.data = DoublyLinkedListNode(c.data)
-        r_node.next = nn
+        if ll.head is None:
+            ll.head = DoublyLinkedListNode(c.data)
+        else:
+            t = ll.head
+            ll.head = DoublyLinkedListNode(c.data)
+            ll.head.next = t
+            
         c = c.next
 
-    r = r_node
-
-    while r:
-        print(r.data)
-        r = r.next
-
-    return r_node
+    return ll.head
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
