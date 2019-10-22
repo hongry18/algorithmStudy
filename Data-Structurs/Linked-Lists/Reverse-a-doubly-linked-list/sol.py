@@ -50,16 +50,16 @@ def print_doubly_linked_list(node, sep, fptr):
 #
 #
 
-def reverse(head):
+def reverse2(head):
     ll = DoublyLinkedList()
     c = head
     while c:
         if ll.head is None:
             ll.head = DoublyLinkedListNode(c.data)
         else:
-            t = ll.head
+            nn = ll.head
             ll.head = DoublyLinkedListNode(c.data)
-            ll.head.next = t
+            ll.head.next = nn
             
         c = c.next
 
