@@ -46,29 +46,23 @@ def print_singly_linked_list(node, sep, fptr):
 #     SinglyLinkedListNode next
 #
 #
+
+def printAll(head):
+    c = head
+    while(c):
+        print(c.data)
+        c = c.next
+
 def findMergeNode(head1, head2):
-    r = -1
-    while head1 or head2:
-        #print(head1.data, head2.data)
-        if head1.next is None:
-            r = head1.data
-            break
 
-        if head2.next is None:
-            r = head2.data
-            break
+    c1 = head1
+    c2 = head2
 
-        #print(head1.data, head2.data)
-        if head1.data == head2.data:
-            #print('cmp false', head1.data, head2.data)
-            r = head1.data
-            break
+    while (c1 != c2):
+        c1 = head2 if c1.next is None else c1.next
+        c2 = head1 if c2.next is None else c2.next
 
-        head1 = head1.next
-        head2 = head2.next
-
-    print(r)
-    return r
+    return c1.data
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
