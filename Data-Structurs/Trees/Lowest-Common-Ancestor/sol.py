@@ -34,32 +34,32 @@ class BinarySearchTree:
                 else:
                     break
 
-"""
-Node is defined as
-self.left (the left child of the node)
-self.right (the right child of the node)
-self.info (the value of the node)
-"""
-def for_left(root):
-    if root.left is not None:
-        for_left(root.left)
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+'''
+class Node:
+      def __init__(self,info): 
+          self.info = info  
+          self.left = None  
+          self.right = None 
+           
 
-    print(root.info)
+       // this is a node of the tree , which contains info as data, left , right
+'''
+def lca(root, v1, v2):
+    #Enter your code here
 
-def for_right(root):
-    print(root.info)
-    if root.right is not None:
-        for_left(root.right)
+    if not root:
+        return None
+    if root.info == v1 or root.info == v2:
+        return root
 
-def topView(root):
-    #Write your code here
-    if root.left is not None:
-        for_left(root.left)
+    left = lca(root.left, v1, v2)
+    right = lca(root.right, v1, v2)
 
-    print(root.info)
-    if root.right is not None:
-        for_right(root.right)
-
+    if left and right:
+        return root
+    else:
+        return left if left else right
 
 tree = BinarySearchTree()
 t = int(input())
@@ -69,4 +69,7 @@ arr = list(map(int, input().split()))
 for i in range(t):
     tree.create(arr[i])
 
-topView(tree.root)
+v = list(map(int, input().split()))
+
+ans = lca(tree.root, v[0], v[1])
+print (ans.info)
