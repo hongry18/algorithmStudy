@@ -1,0 +1,26 @@
+				<td><font color='blue'>마감</font><br />(객관식)</td>
+--
+						<span class="name">한국폴리텍대학 성남캠퍼스(주차장협소,대중교통이용)<br>【선택분야없음】</span>
+						<button type="button" class="btn3_type3" onclick="viewExemArea('7306')" title="새창으로 경기도 성남시 수정구 수정로 398 (산성동) 약도보기"><span>약도보기</span></button>&nbsp;
+						
+					</p>
+				
+				</td>
+				<td>300</td>
+				<td><font color='blue'>마감</font><br />(객관식)</td>
+--
+						<span class="name">여주대학교(봉사관)<br>【선택분야없음】</span>
+						<button type="button" class="btn3_type3" onclick="viewExemArea('7311')" title="새창으로 경기도 여주시 세종로 338 (교동) 약도보기"><span>약도보기</span></button>&nbsp;
+						
+					</p>
+				
+				</td>
+				<td>665</td>
+				<td>13<br />(객관식)</td>
+--
+						<span class="name">양영디지털고등학교(주차불가. 대중교통 이용)(주차불가)<br>【선택분야없음】</span>
+						<button type="button" class="btn3_type3" onclick="viewExemArea('0848')" title="새창으로 경기도 성남시 분당구 불정로386번길 35 (서현동) 약도보기"><span>약도보기</span></button>&nbsp;
+						
+					</p>
+				
+				</td>

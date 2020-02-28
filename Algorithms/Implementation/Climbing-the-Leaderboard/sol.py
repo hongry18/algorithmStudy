@@ -11,9 +11,6 @@ def climbingLeaderboard(scores, alice):
     ranks = []
     scores = list(dict.fromkeys(scores))
 
-    for s in alice:
-        print(scores.index(s))
-
     return ranks
 
 if __name__ == '__main__':
