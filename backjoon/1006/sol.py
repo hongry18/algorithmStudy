@@ -3,7 +3,7 @@
 
 from sys import stdin, stdout
 
-def solv(s, a, b, c, e, w, n):
+def solv(s):
     for i in range(s, n):
         a[i+1] = min(b[i] + 1, c[i] + 1)
 
@@ -39,7 +39,7 @@ if __name__ == '__main__':
         b[0] = 1
         c[0] = 1
 
-        solv(0, a, b, c, e, w, n)
+        solv(0)
         res = min(res,a[n])
 
         if n > 1:
@@ -47,21 +47,21 @@ if __name__ == '__main__':
                 a[1] = 1
                 b[1] = 2
                 c[1] = 1 if e[0][1] + e[1][1] <= w else 2
-                solv(1, a, b, c, e, w, n)
+                solv(1)
                 res = min(res,c[n-1]+1)
 
             if e[0][1] + e[n-1][1] <= w:
                 a[1] = 1
                 b[1] = 1 if e[0][0] + e[1][0] <= w else 2
                 c[1] = 2
-                solv(1, a, b, c, e, w, n)
+                solv(1)
                 res = min(res,b[n-1]+1)
 
             if e[0][0] + e[n-1][0] <= w and e[0][1] + e[n-1][1] <= w:
                 a[1] = 0
                 b[1] = 1
                 c[1] = 1
-                solv(1, a, b, c, e, w, n)
+                solv(1)
                 res = min(res,a[n-1]+2)
 
         print(res)
