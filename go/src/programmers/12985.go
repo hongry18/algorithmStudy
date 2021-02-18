@@ -3,14 +3,26 @@ package main
 import "fmt"
 
 func main() {
-    var a int
     //a = solution(8, 1, 2)
     //a = solution(8, 2, 3)
-    a = solution(4096, 2, 3999)
     //a = solution(32, 8, 10)
-    fmt.Println(a)
-    a = solution3(4096, 2, 3999)
-    fmt.Println(a)
+
+    var length = 8
+
+    var items []int
+    for i:=0; i<length; i++ {
+        items = append(items, i+1)
+    }
+    var f [][]int = Comb(items, make([]bool, length), 0, length, 2)
+
+    for _, v := range f {
+        c1:=solution(length, v[0], v[1])
+        c2:=solution3(length, v[0], v[1])
+        if c1 == c2 {
+            continue
+        }
+        fmt.Println(length, v[0], v[1], c1, c2)
+    }
 }
 
 func solution(n, a, b int) int {
@@ -69,7 +81,7 @@ func solution3(n, a, b int) int {
     }
 
     for {
-        if i >= c {
+        if i > c {
             break
         }
         i *= 2
@@ -119,4 +131,41 @@ func solution2(n, a, b int) int {
     }
 
     return cnt
+}
+
+func Comb(arr []int, visit []bool, s, n, r int) [][]int {
+    if r == 0 {
+        t := make([]int, 0)
+        for i:=0; i<n; i++ {
+            if visit[i] {
+                t = append(t, arr[i])
+            }
+        }
+        return [][]int{t}
+    }
+
+    res := make([][]int, 0)
+    for i:=s; i<n; i++ {
+        visit[i] = true
+        c := Comb(arr, visit, i+1, n, r-1)
+        res = append(res, c...)
+        visit[i] = false
+    }
+    return res
+}
+
+
+func solution4(n int, a int, b int) int {
+    ans := 1
+
+    a--
+    b--
+
+    for a/2 != b/2 {
+        ans++
+        a /= 2
+        b /= 2
+    }
+
+    return ans
 }
