@@ -74,10 +74,12 @@ func solution3(n, a, b int) int {
     var i int = 2
     var c int = a - b
 
-    if a % 2 == 0 {
-        c += 1
-    } else {
-        c += 2
+    if a % 2 == 1 && b % 2 == 0 {
+        c++
+    }
+
+    if a % 2 == 1 && b % 2 == 1 {
+        c+=2
     }
 
     for {
