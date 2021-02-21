@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 import "math"
+import "errors"
 
 func main() {
     var a int
@@ -14,47 +15,58 @@ func main() {
 }
 
 func solution(n int, c [][]int) int {
-    return find(c[1:], ToInt(c[0]))
+    //return find(n, c)
+    q := Queue{items: c}
+    find(n, q)
+
+    return 0
 }
 
-func find(c [][]int, a int) int {
-    var o int = a
-    var b int
-    var unmatch [][]int
-    var sum = 1
+type Queue struct {
+    items [][]int
+}
 
-    for i:=0; i<len(c); i++ {
-        b = ToInt(c[i])
+func (q *Queue) Add(i []int) {
+    q.items = append(q.items, i)
+}
+
+func (q *Queue) Get() ( []int, error ) {
+    if len(q.items) == 0 {
+        return []int{}, errors.New("empty")
+    }
+
+    item, items := q.items[0], q.items[1:]
+    q.items = items
+    return item, nil
+}
+
+func find(n int, q Queue) int {
+    fmt.Println(q)
+    var idx int = 0
+    var item []int
+    item, _ = q.Get()
+    a := ToInt(item)
+    for {
+        if idx == n {
+            break
+        }
+
+        item, e := q.Get()
+        if e != nil {
+            break
+        }
+
+        b := ToInt(item)
+
         if a & b == 0 {
-            unmatch = append(unmatch, c[i])
-            continue
+            q.Add(item)
         }
 
-        a = a | b
+        idx++
     }
 
-    if len(unmatch) == 0 {
-        return sum
-    }
-
-    d := ToInt(unmatch[0])
-    if len(unmatch) == 1 {
-        if a & d == 0 {
-            return sum + 1
-        } else {
-            return sum
-        }
-    }
-
-    if a & d == 0 {
-        return find(unmatch[1:], d)
-    }
-
-    if o == a {
-        sum--
-    }
-
-    return find(unmatch[1:], d|a)
+    fmt.Println(a, idx)
+    return 0
 }
 
 func ToInt(a []int) int {
