@@ -6,9 +6,12 @@ import (
     "bufio"
 )
 
+var (
+    w = bufio.NewWriter(os.Stdout)
+)
+
 func main() {
-    writer := bufio.NewWriter(os.Stdout)
-    defer writer.Flush()
+    defer w.Flush()
 
     txt := `\    /\
  )  ( ')
@@ -16,5 +19,5 @@ func main() {
  \(__)|
 `
 
-    fmt.Fprintf(writer, "%s", txt)
+    fmt.Fprintf(w, "%s", txt)
 }
