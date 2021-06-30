@@ -38,17 +38,24 @@ func cal(x int) int {
 }
 
 func check(x int) bool {
+	// 역순으로 계산함.
+
+	// 1항
 	f1 := x % 10
 	x /= 10
+	// 2항
 	f2 := x % 10
+	// 등차
 	f := f2 - f1
 
+	// 공차가 5 이상인건 1의자리에서는 존재할수 없기에 패스
 	if f > 4 {
 		return false
 	}
 
 	x /= 10
 
+	// 공차가 5 미만인것들중에 등차가 성립하지 않는것 찾기
 	for {
 		c := x % 10
 		if (f2 + f) != c {
