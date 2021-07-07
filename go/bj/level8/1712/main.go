@@ -11,6 +11,11 @@ var (
 	reader = bufio.NewReader(os.Stdin)
 )
 
+/*
+손익분기점 계산법
+고정영업비용 / (판매가 - 단위당 변동비)
+*/
+
 func main() {
 	defer writer.Flush()
 

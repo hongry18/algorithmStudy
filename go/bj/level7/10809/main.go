@@ -20,7 +20,8 @@ func main() {
 		alphabets[byte(i)] = -1
 	}
 
-	s := "baekjoon"
+	var s string
+	fmt.Fscanf(r, "%s\n", &s)
 	for i := 0; i < len(s); i++ {
 		v, _ := alphabets[s[i]]
 		if v != -1 {
