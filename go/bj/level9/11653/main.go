@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 )
 
 var (
@@ -14,21 +15,52 @@ var (
 func main() {
 	defer w.Flush()
 
-	// var N int
-	// fmt.Fscanf(r, "%d", &N)
-	Prime(72)
+	var N int
+	fmt.Fscanf(r, "%d", &N)
+
+	for _, v := range Sol(N) {
+		fmt.Fprintln(w, v)
+	}
 }
 
-func Prime(x int) []int {
+func Sol(x int) []int {
+	if x < 2 {
+		return nil
+	}
+
 	if x < 4 {
 		return []int{x}
 	}
 
-	for i := 2; i <= x/2; i++ {
-		if x%i == 0 {
-			fmt.Println(x, i, x%i)
+	a := x
+	var ans []int = make([]int, 0)
+	for i := 2; i <= x; i++ {
+		if x%i != 0 {
+			continue
+		}
+
+		for {
+			if a%i != 0 {
+				break
+			}
+
+			a = a / i
+			ans = append(ans, i)
+
+			if a < 2 {
+				break
+			}
+
+		}
+
+		if a < 2 {
+			break
 		}
 	}
 
-	return []int{}
+	sort.Slice(ans, func(i, j int) bool {
+		return ans[i] < ans[j]
+	})
+
+	return ans
 }

@@ -14,23 +14,19 @@ var (
 
 func main() {
 	defer w.Flush()
+	var M, N int
+	fmt.Fscanf(r, "%d %d\n", &M, &N)
 
-	var N, x int
-
-	fmt.Fscanf(r, "%d\n", &N)
-
-	ans := 0
-	for i := 0; i < N; i++ {
-		fmt.Fscanf(r, "%d", &x)
-		if sol(x) {
-			ans += 1
+	for i := M; i <= N; i++ {
+		if !IsPrime(i) {
+			continue
 		}
-	}
 
-	fmt.Fprintln(w, ans)
+		fmt.Fprintln(w, i)
+	}
 }
 
-func sol(x int) bool {
+func IsPrime(x int) bool {
 	if x < 2 {
 		return false
 	}
@@ -48,6 +44,5 @@ func sol(x int) bool {
 			return false
 		}
 	}
-
 	return true
 }
