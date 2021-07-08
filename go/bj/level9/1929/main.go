@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"math"
 	"os"
 )
 
@@ -17,8 +16,10 @@ func main() {
 	var M, N int
 	fmt.Fscanf(r, "%d %d\n", &M, &N)
 
+	prime := Prime(N)
+
 	for i := M; i <= N; i++ {
-		if !IsPrime(i) {
+		if prime[i] == 1 {
 			continue
 		}
 
@@ -26,24 +27,20 @@ func main() {
 	}
 }
 
-func IsPrime(x int) bool {
-	if x < 2 {
-		return false
-	}
+func Prime(x int) []int {
+	var prime []int = make([]int, x+1)
+	prime[0] = 1
+	prime[1] = 1
 
-	if x < 4 {
-		return true
-	}
+	for i := 2; i*i <= x; i++ {
+		if prime[i] != 0 {
+			continue
+		}
 
-	if x%2 == 0 || x%3 == 0 {
-		return false
-	}
-
-	for i := 2; i <= int(math.Sqrt(float64(x))); i++ {
-		if x%i == 0 {
-			return false
+		for j := i * i; j <= x; j += i {
+			prime[j] = 1
 		}
 	}
 
-	return true
+	return prime
 }
