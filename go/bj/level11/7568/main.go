@@ -24,13 +24,14 @@ func main() {
 		ans = append(ans, []int{x, y, 0, i, 0})
 	}
 
-	fmt.Println()
-	fmt.Println()
 	for i := 0; i < N; i++ {
 		var cnt int = 1
 		for j := 0; j < N; j++ {
-			fmt.Println(i, j)
-			if ans[i][0] > ans[j][0] && ans[i][1] > ans[j][1] {
+			if i == j {
+				continue
+			}
+
+			if ans[i][0] < ans[j][0] && ans[i][1] < ans[j][1] {
 				cnt += 1
 			}
 		}
